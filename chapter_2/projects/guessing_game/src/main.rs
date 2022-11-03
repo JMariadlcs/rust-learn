@@ -26,14 +26,23 @@ fn main() {
         // SHADOWING -> redefine 'guess' another time to change its type (u32)
         // trim() eliminates blank spaces at the starting and end part of a String
         // parse() converts String to specified type (u32)
-        let guess: u32 = guess.trim().parse().expect("Please type a number!");
+        let guess: u32 = match guess.trim().parse() {
+                Ok(num) => num,
+                Err(_) => {
+                    println!("Please input a number.");
+                    continue
+                }
+            };
 
         println!("Your guess was: {}", guess);
 
         match guess.cmp(&secret_number) {
             Ordering::Less => println!("Guess is too small."),
             Ordering::Greater => println!("Guess is to high"),
-            Ordering::Equal => { println!("Correct guess!!"); break }
+            Ordering::Equal => { 
+                println!("Correct guess!!");
+                break 
+            }
         }
     }
 
