@@ -64,8 +64,29 @@ fn main() {
                                     // but i32 is Copy, so it's okay to still
                                     // use x afterward
     println!("As x is integer it can be still used here, x is: {}", x);
+
+    // ----- RETURN VALUES AND SCOPE ------
+
+    let s1 = gives_ownership();  // gives_ownership moves its return
+                                         // value into s1
+    println!("s1 can be used here {}", s1);
+
+    let s2 = String::from("hello"); // s2 comes into scope
+    println!("s2 can be used here {}", s2);
+
+    let s3 = takes_and_gives_back(s2);  // s2 is moved into
+                                        // takes_and_gives_back, which also
+                                        // moves its return value into s3
+
+    // println!("s2 can NOT be used here {}", s2);
+
+    println!("s3 can be used here {}", s3);
+
+
 }   // Here, x goes out of scope, then s. But because s's value was moved, nothing
     // special happens.
+    // Here, s3 goes out of scope and is dropped. s2 was moved, so nothing
+    // happens. s1 goes out of scope and is dropped.
 
 // ----- OWNERSHIP AND FUNCTIONS ------
 
@@ -77,3 +98,24 @@ fn takes_ownership(some_string: String) { // some_string comes into scope
 fn makes_copy(some_integer: i32) { // some_integer comes into scope
     println!("{}", some_integer);
 } // Here, some_integer goes out of scope. Nothing special happens.
+
+
+// ----- RETURN VALUES AND SCOPE ------
+
+fn gives_ownership() -> String {  // gives_ownership will move its
+                                  // return value into the function
+                                  // that calls it
+
+let some_string = String::from("yours"); // some_string comes into scope
+
+some_string   // some_string is returned and
+              // moves out to the calling
+              // function
+}
+
+// This function takes a String and returns one
+fn takes_and_gives_back(a_string: String) -> String { // a_string comes into
+             // scope
+
+a_string  // a_string is returned and moves out to the calling function
+}
