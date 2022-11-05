@@ -25,11 +25,22 @@ fn main() {
     
 
     // ----- CLONE ------
-    // By cloning, s1 would be still be accesible after scope
+
+    // By cloning, s1 would be still be accesible after scope -> EXPENSIVE
+    // Used when different things are going on
     let s1 = String::from("hello");
     let s2 = s1.clone();
 
     println!("s1 = {}, s2 = {}", s1, s2);
+
+    // ----- COPY ------
+    
+    // In this case x is still valid altough 'clone()' was not used
+    // This is because integers are stored on the STACK not on the HEAP
+    let x = 5;
+    let y = x;
+
+    println!("x = {}, y = {}", x, y);
     
     
 }
