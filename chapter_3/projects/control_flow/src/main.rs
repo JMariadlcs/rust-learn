@@ -1,7 +1,7 @@
 fn main() {
     println!("Hello, Control Flows!");
 
-    // If expressions
+    // IF EXPRESSIONS
     let returned: bool = grater_than_number(72);
     println!("Comparison returned {}", returned);
     // Match function
@@ -10,10 +10,18 @@ fn main() {
     // If in an expression
     let number = -4;
     let is_positive = if number > 0 { true } else { false };
-    println!("Value is positive: {}", is_positive)
+    println!("Value is positive: {}", is_positive);
+
+    // LOOPS
+    // simple
+    simple_loop();
+    // while
+    while_loop();
+    // for
+    for_loop();
 }
 
-// If expressions
+// IF EXPRESSIONS
 fn grater_than_number(x: i32) -> bool {
     if x > 5 {
         true
@@ -34,3 +42,41 @@ fn match_function(number: u32) {
     }
 }
 */
+
+// LOOPS
+// simple loop
+fn simple_loop() {
+    let mut counter = 0;
+
+    let result = loop {
+        counter += 1;
+
+        if counter == 10 {
+            break counter * 2;
+        }
+    };
+
+    println!("The result is {result}");
+}
+
+// While loop
+fn while_loop() {
+    let mut number = 3; // number must be mut because it is changed inside while loop
+
+    while number != 0 {
+        println!("{number}!");
+
+        number -= 1;
+    }
+
+    println!("LIFTOFF!!!");
+}
+
+// For loop
+fn for_loop() {
+    let a = [10, 20, 30, 40, 50];
+
+    for element in a {
+        println!("the value is: {element}");
+    }
+}
