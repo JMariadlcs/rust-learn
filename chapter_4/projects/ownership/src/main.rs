@@ -56,12 +56,14 @@ fn main() {
     takes_ownership(s); // s's value moves into the function...
                                     // ... and so is no longer valid here
 
+    // println!("As s is strubg it can NOT be still used here, s is: {}", s);
+
     let x = 5;                 // x comes into scope
 
     makes_copy(x);     // x would move into the function,
                                     // but i32 is Copy, so it's okay to still
                                     // use x afterward
-    println!("As x is integer it can be still used here, x is: {}", x)
+    println!("As x is integer it can be still used here, x is: {}", x);
 }   // Here, x goes out of scope, then s. But because s's value was moved, nothing
     // special happens.
 
