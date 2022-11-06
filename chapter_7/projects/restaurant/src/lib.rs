@@ -14,7 +14,15 @@ mod front_of_house {
     }
 }
 
+// Use with abs path and 'pub' so other scopes can use it
+pub use crate::front_of_house::hosting;
+// Use with relative path
+// use front_of_house::hosting;
+
 pub fn eat_at_restaurant() { // Can refer to 'front_of_house' altough it is priv, they are in the same module and level
+    // Calling to a function from other module
+    hosting::add_to_waitlist();
+
     // Absolute path
     crate::front_of_house::hosting::add_to_waitlist();
 
