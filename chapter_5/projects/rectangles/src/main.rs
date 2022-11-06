@@ -27,6 +27,58 @@ fn main() {
     println!("Rectangle struct is: {:?} ", rect_struct);
     dbg!(&rect_struct); // Debug function!
 
+    // METHODS
+    impl Rectangle {
+        fn rect_area(&self) -> u32 {
+            self.width * self.height
+        }
+    }
+    println!( "The area of the rectangle using METHODS is {} square pixels.", rect_struct.rect_area());
+    
+    impl Rectangle {
+        fn width(&self) -> bool {
+            self.width > 0
+        }
+        
+        fn can_hold(&self, other_rect: &Rectangle) -> bool {
+            self.width > other_rect.width && self.height > other_rect.height
+        }
+
+        // ASSOCIATED FUNCTIONS
+        fn square(size: u32) -> Self {
+            Self {
+                width: size,
+                height: size,
+            }
+        }
+    }
+    
+    if rect_struct.width() {
+        println!("The rectangle has a nonzero width; it is {}", rect_struct.width);
+    }
+
+    // METHODS WITH MORE PARAMETERS
+    let rect1 = Rectangle {
+        width: 30,
+        height: 50,
+    };
+    let rect2 = Rectangle {
+        width: 10,
+        height: 40,
+    };
+    let rect3 = Rectangle {
+        width: 60,
+        height: 45,
+    };
+    println!("Can rect1 hold rect2? {}", rect1.can_hold(&rect2));
+    println!("Can rect1 hold rect3? {}", rect1.can_hold(&rect3));
+
+    // ASSOCIATED FUNCTIONS
+    let hip_to_be_squared = Rectangle::square(5);
+    println!("hip_to_be_squared {:?}", hip_to_be_squared)
+
+
+
 }
 
 // TUPLES
