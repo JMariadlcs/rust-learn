@@ -8,6 +8,9 @@ fn main() {
 
     print_only_six(6);
     print_only_six(2);
+
+    // HANDLE MATCH WITH OPTION<T> CASE
+    print_only_six_option(Some(6));
 }
 
 fn plus_one(x: Option<i32>) -> Option<i32> {
@@ -20,7 +23,16 @@ fn plus_one(x: Option<i32>) -> Option<i32> {
 
 fn print_only_six (x: u8) {
     match x { // COVER ALL MATCHING CASES (use '_' for 'others')
-        6 => println!("5"),
+        6 => println!("6"),
         _ => println!(""),
     }
 }
+
+// HANDLE MATCH WITH OPTION<T> CASE
+fn print_only_six_option (x: Option<u8>) {
+    if let Some(6) = x {
+        println!("6")
+    }
+}
+
+
