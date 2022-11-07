@@ -81,4 +81,8 @@ fn main() {
     ];
 
     println!("Elements in row are {:?}, {:?}, {:?}", row[0], row[1], row[2]);
+
+    for i in &row {
+        println!("Elements in row {:?}", i)
+    }
 }
