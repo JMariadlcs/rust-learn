@@ -48,4 +48,18 @@ fn main() {
 
     let s = format!("{}-{}-{}", s1, s2, s3); // Works as println! but instead of printing, returns a string
     println!("Returned string is {}", s);
+
+    // SLICING STRINGS
+    let hello = "Здравствуйте";
+    let s = &hello[0..4];
+    println!("string slice is {}", s);
+
+    // ITERATING OVER A STRING
+    for c in "Зд".chars() {
+        println!("{}", c);
+    }
+
+    for b in "Зд".bytes() {
+        println!("{}", b);
+    }
 }
