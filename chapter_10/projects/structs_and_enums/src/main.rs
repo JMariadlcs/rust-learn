@@ -66,10 +66,12 @@ fn main() {
     let p = Point { x: 5, y: 10 };
     println!("p.x = {}", p.x());
 
-    let p1 = Point3 { x: 5, y: 10.4 };
-    let p2 = Point3 { x: "Hello", y: 'c' };
+    // Combinatin of objects
+    let p1 = Point3 { x: 5, y: 10.4 }; // x is the T, y is the W
+    let p2 = Point3 { x: "Hello", y: 'c' }; // x is the V, y is the W
 
     let p3 = p1.mixup(p2);
 
     println!("p3.x = {}, p3.y = {}", p3.x, p3.y);
+
 }
