@@ -71,3 +71,34 @@ fn main() {
 pub fn notify(item: &impl Summary) { // Takes item that has implemented Summary Trait
     println!("Breaking news! {}", item.summarize());
 }
+
+// Other Syntax implementations
+// pub fn notify(item1: &impl Summary, item2: &impl Summary) {
+// pub fn notify<T: Summary>(item1: &T, item2: &T) {
+
+// Specifying Multiple Trait Bounds with the + Syntax
+// pub fn notify(item: &(impl Summary + Display)) { // 2 Traits implementations
+// pub fn notify<T: Summary + Display>(item: &T) { // Same with generic types <T>
+
+// Clearer Trait Bounds with where Clauses
+// fn some_function<T: Display + Clone, U: Clone + Debug>(t: &T, u: &U) -> i32 {
+// or
+/*  fn some_function<T, U>(t: &T, u: &U) -> i32
+    where
+        T: Display + Clone,
+        U: Clone + Debug,
+    {
+*/
+
+// Returning Types that Implement Traits
+fn returns_summarizable() -> impl Summary { // Returns a Type that implementes Trait Summary
+                                            // can only be used if returns only 1 implemented trait
+    Tweet {
+        username: String::from("horse_ebooks"),
+        content: String::from(
+            "of course, as you probably already know, people",
+        ),
+        reply: false,
+        retweet: false,
+    }
+}
