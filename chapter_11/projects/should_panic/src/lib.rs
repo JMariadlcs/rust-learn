@@ -20,7 +20,7 @@ impl Guess {
     }
 }
 
-#[cfg(test)]
+#[cfg(test)] // only compile when 'cargo test' not when 'cargo build'
 mod tests {
     use super::*;
 
