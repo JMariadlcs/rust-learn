@@ -37,7 +37,6 @@ fn directory() {
 
         let employees = employee_directory.entry(String::from(department)).or_insert(vec![String::from(person)]);
         employees.push(String::from(person));
-
         println!("Employee directory {:?}", employee_directory);
     }
 }
